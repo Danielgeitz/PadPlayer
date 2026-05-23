@@ -1,0 +1,1283 @@
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"Setlist.cpp"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text._ZN7SetlistC2ER9SdHandler,"ax",%progbits
+  17              		.align	1
+  18              		.global	_ZN7SetlistC2ER9SdHandler
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv5-d16
+  25              	_ZN7SetlistC2ER9SdHandler:
+  26              	.LVL0:
+  27              	.LFB2735:
+  28              		.file 1 "Setlist.cpp"
+   1:Setlist.cpp   **** #include "Setlist.h"
+   2:Setlist.cpp   **** #include <string.h>
+   3:Setlist.cpp   **** #include <stdlib.h>
+   4:Setlist.cpp   **** #include <stdio.h>
+   5:Setlist.cpp   **** 
+   6:Setlist.cpp   **** Setlist::Setlist(SdHandler& sd)
+  29              		.loc 1 6 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 6 1 is_stmt 0 view .LVU1
+  34 0000 10B5     		push	{r4, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38              	.LBB2:
+   7:Setlist.cpp   **** : sd_(sd), count_(0), currentIndex_(0), loaded_(false)
+  39              		.loc 1 7 54 view .LVU2
+  40 0002 0160     		str	r1, [r0]
+  41 0004 0021     		movs	r1, #0
+  42              	.LVL1:
+  43              		.loc 1 7 54 view .LVU3
+  44              	.LBE2:
+   6:Setlist.cpp   **** : sd_(sd), count_(0), currentIndex_(0), loaded_(false)
+  45              		.loc 1 6 1 view .LVU4
+  46 0006 0446     		mov	r4, r0
+  47              	.LBB6:
+  48              	.LBB3:
+   8:Setlist.cpp   **** {
+   9:Setlist.cpp   ****     for(int i = 0; i < 12; i++)
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 2
+
+
+  10:Setlist.cpp   ****         entries_[i] = {};
+  49              		.loc 1 10 21 view .LVU5
+  50 0008 4FF43162 		mov	r2, #2832
+  51              	.LBE3:
+   7:Setlist.cpp   **** {
+  52              		.loc 1 7 54 view .LVU6
+  53 000c C0F8141B 		str	r1, [r0, #2836]
+  54              	.LBB4:
+  55              		.loc 1 10 21 view .LVU7
+  56 0010 0430     		adds	r0, r0, #4
+  57              	.LVL2:
+  58              		.loc 1 10 21 view .LVU8
+  59              	.LBE4:
+   7:Setlist.cpp   **** {
+  60              		.loc 1 7 54 view .LVU9
+  61 0012 C0F8141B 		str	r1, [r0, #2836]
+  62 0016 80F8181B 		strb	r1, [r0, #2840]
+  63              	.LBE6:
+   9:Setlist.cpp   ****         entries_[i] = {};
+  64              		.loc 1 9 5 is_stmt 1 view .LVU10
+  65              	.LVL3:
+  66              	.LBB7:
+  67              	.LBB5:
+   9:Setlist.cpp   ****         entries_[i] = {};
+  68              		.loc 1 9 22 view .LVU11
+  69              		.loc 1 10 21 is_stmt 0 view .LVU12
+  70 001a FFF7FEFF 		bl	memset
+  71              	.LVL4:
+  72              		.loc 1 10 21 view .LVU13
+  73              	.LBE5:
+  74              	.LBE7:
+  11:Setlist.cpp   **** }
+  75              		.loc 1 11 1 view .LVU14
+  76 001e 2046     		mov	r0, r4
+  77 0020 10BD     		pop	{r4, pc}
+  78              		.loc 1 11 1 view .LVU15
+  79              		.cfi_endproc
+  80              	.LFE2735:
+  82              		.global	_ZN7SetlistC1ER9SdHandler
+  83              		.thumb_set _ZN7SetlistC1ER9SdHandler,_ZN7SetlistC2ER9SdHandler
+  84              		.section	.text._ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry,"ax",%progbits
+  85              		.align	1
+  86              		.global	_ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  90              		.fpu fpv5-d16
+  92              	_ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry:
+  93              	.LVL5:
+  94              	.LFB2739:
+  12:Setlist.cpp   **** 
+  13:Setlist.cpp   **** bool Setlist::Load()
+  14:Setlist.cpp   **** {
+  15:Setlist.cpp   ****     loaded_ = false;
+  16:Setlist.cpp   ****     count_  = 0;
+  17:Setlist.cpp   **** 
+  18:Setlist.cpp   ****     if(!sd_.OpenFile(SETLIST_PATH))
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 3
+
+
+  19:Setlist.cpp   ****         return false;
+  20:Setlist.cpp   **** 
+  21:Setlist.cpp   ****     char line[128];
+  22:Setlist.cpp   ****     int  lineNum = 0;
+  23:Setlist.cpp   **** 
+  24:Setlist.cpp   ****     while(sd_.ReadLine(line, sizeof(line)) && count_ < 12)
+  25:Setlist.cpp   ****     {
+  26:Setlist.cpp   ****         lineNum++;
+  27:Setlist.cpp   **** 
+  28:Setlist.cpp   ****         // Skip empty lines and comments
+  29:Setlist.cpp   ****         if(line[0] == '\0' || line[0] == '#')
+  30:Setlist.cpp   ****             continue;
+  31:Setlist.cpp   **** 
+  32:Setlist.cpp   ****         SetlistEntry entry = {};
+  33:Setlist.cpp   ****         if(ParseLine(line, entry))
+  34:Setlist.cpp   ****         {
+  35:Setlist.cpp   ****             entries_[count_++] = entry;
+  36:Setlist.cpp   ****         }
+  37:Setlist.cpp   ****         // if ParseLine fails we just skip this line
+  38:Setlist.cpp   ****     }
+  39:Setlist.cpp   **** 
+  40:Setlist.cpp   ****     sd_.CloseFile();
+  41:Setlist.cpp   ****     loaded_ = count_ > 0;
+  42:Setlist.cpp   ****     return loaded_;
+  43:Setlist.cpp   **** }
+  44:Setlist.cpp   **** 
+  45:Setlist.cpp   **** bool Setlist::ParseLine(const char* line, SetlistEntry& entry)
+  46:Setlist.cpp   **** {
+  47:Setlist.cpp   ****     // Expected format: "A_Soft Pad, 120, 4/4"
+  48:Setlist.cpp   ****     // Make a mutable copy to tokenize
+  49:Setlist.cpp   ****     char buf[128];
+  50:Setlist.cpp   ****     strncpy(buf, line, sizeof(buf) - 1);
+  51:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+  52:Setlist.cpp   **** 
+  53:Setlist.cpp   ****     // Split on commas
+  54:Setlist.cpp   ****     char* token1 = strtok(buf, ",");  // "A_Soft Pad"
+  55:Setlist.cpp   ****     char* token2 = strtok(NULL, ","); // " 120"
+  56:Setlist.cpp   ****     char* token3 = strtok(NULL, ","); // " 4/4"
+  57:Setlist.cpp   **** 
+  58:Setlist.cpp   ****     if(!token1 || !token2 || !token3)
+  59:Setlist.cpp   ****         return false;
+  60:Setlist.cpp   **** 
+  61:Setlist.cpp   ****     // Trim leading spaces
+  62:Setlist.cpp   ****     while(*token1 == ' ')
+  63:Setlist.cpp   ****         token1++;
+  64:Setlist.cpp   ****     while(*token2 == ' ')
+  65:Setlist.cpp   ****         token2++;
+  66:Setlist.cpp   ****     while(*token3 == ' ')
+  67:Setlist.cpp   ****         token3++;
+  68:Setlist.cpp   **** 
+  69:Setlist.cpp   ****     // Parse key and name from token1
+  70:Setlist.cpp   ****     ParseKeyAndName(token1, entry);
+  71:Setlist.cpp   **** 
+  72:Setlist.cpp   ****     // Build filename and filepath
+  73:Setlist.cpp   ****     snprintf(entry.filename, sizeof(entry.filename), "%s.wav", token1);
+  74:Setlist.cpp   ****     snprintf(
+  75:Setlist.cpp   ****         entry.filepath, sizeof(entry.filepath), "%s%s.wav", PADS_PATH, token1);
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 4
+
+
+  76:Setlist.cpp   **** 
+  77:Setlist.cpp   ****     // Parse BPM
+  78:Setlist.cpp   ****     entry.bpm = atoi(token2);
+  79:Setlist.cpp   ****     if(entry.bpm <= 0 || entry.bpm > 400)
+  80:Setlist.cpp   ****         return false;
+  81:Setlist.cpp   **** 
+  82:Setlist.cpp   ****     // Parse time signature
+  83:Setlist.cpp   ****     ParseTimeSignature(token3, entry.numerator, entry.denominator);
+  84:Setlist.cpp   ****     if(entry.numerator <= 0 || entry.denominator <= 0)
+  85:Setlist.cpp   ****         return false;
+  86:Setlist.cpp   **** 
+  87:Setlist.cpp   ****     entry.valid = true;
+  88:Setlist.cpp   ****     return true;
+  89:Setlist.cpp   **** }
+  90:Setlist.cpp   **** 
+  91:Setlist.cpp   **** void Setlist::ParseKeyAndName(const char* token, SetlistEntry& entry)
+  92:Setlist.cpp   **** {
+  95              		.loc 1 92 1 is_stmt 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  93:Setlist.cpp   ****     // Split "A_Soft Pad" on first '_'
+  94:Setlist.cpp   ****     const char* underscore = strchr(token, '_');
+  99              		.loc 1 94 5 view .LVU17
+  92:Setlist.cpp   ****     // Split "A_Soft Pad" on first '_'
+ 100              		.loc 1 92 1 is_stmt 0 view .LVU18
+ 101 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 102              		.cfi_def_cfa_offset 24
+ 103              		.cfi_offset 4, -24
+ 104              		.cfi_offset 5, -20
+ 105              		.cfi_offset 6, -16
+ 106              		.cfi_offset 7, -12
+ 107              		.cfi_offset 8, -8
+ 108              		.cfi_offset 14, -4
+  92:Setlist.cpp   ****     // Split "A_Soft Pad" on first '_'
+ 109              		.loc 1 92 1 view .LVU19
+ 110 0004 0E46     		mov	r6, r1
+ 111 0006 1446     		mov	r4, r2
+ 112              		.loc 1 94 36 view .LVU20
+ 113 0008 5F21     		movs	r1, #95
+ 114              	.LVL6:
+ 115              		.loc 1 94 36 view .LVU21
+ 116 000a 3046     		mov	r0, r6
+ 117              	.LVL7:
+ 118              	.LBB10:
+ 119              	.LBB11:
+  95:Setlist.cpp   **** 
+  96:Setlist.cpp   ****     if(underscore == NULL)
+  97:Setlist.cpp   ****     {
+  98:Setlist.cpp   ****         // No underscore found — use whole token as name, no key
+  99:Setlist.cpp   ****         strncpy(entry.name, token, sizeof(entry.name) - 1);
+ 120              		.loc 1 99 23 view .LVU22
+ 121 000c 04F10408 		add	r8, r4, #4
+ 122              	.LBE11:
+ 123              	.LBE10:
+  94:Setlist.cpp   **** 
+ 124              		.loc 1 94 36 view .LVU23
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 5
+
+
+ 125 0010 FFF7FEFF 		bl	strchr
+ 126              	.LVL8:
+  96:Setlist.cpp   ****     {
+ 127              		.loc 1 96 5 is_stmt 1 view .LVU24
+ 128 0014 0546     		mov	r5, r0
+ 129 0016 38B9     		cbnz	r0, .L3
+ 130              	.LVL9:
+ 131              	.LBB13:
+ 132              	.LBI10:
+  91:Setlist.cpp   **** {
+ 133              		.loc 1 91 6 view .LVU25
+ 134              	.LBB12:
+ 135              		.loc 1 99 9 view .LVU26
+ 136              		.loc 1 99 16 is_stmt 0 view .LVU27
+ 137 0018 3F22     		movs	r2, #63
+ 138 001a 3146     		mov	r1, r6
+ 139 001c 4046     		mov	r0, r8
+ 140              	.LVL10:
+ 141              		.loc 1 99 16 view .LVU28
+ 142 001e FFF7FEFF 		bl	strncpy
+ 143              	.LVL11:
+ 100:Setlist.cpp   ****         entry.key[0] = '\0';
+ 144              		.loc 1 100 9 is_stmt 1 view .LVU29
+ 145              		.loc 1 100 22 is_stmt 0 view .LVU30
+ 146 0022 2570     		strb	r5, [r4]
+ 101:Setlist.cpp   ****         return;
+ 147              		.loc 1 101 9 is_stmt 1 view .LVU31
+ 148              	.LVL12:
+ 149              	.L2:
+ 150              		.loc 1 101 9 is_stmt 0 view .LVU32
+ 151              	.LBE12:
+ 152              	.LBE13:
+ 102:Setlist.cpp   ****     }
+ 103:Setlist.cpp   **** 
+ 104:Setlist.cpp   ****     // Key is everything before '_'
+ 105:Setlist.cpp   ****     int keyLen = underscore - token;
+ 106:Setlist.cpp   ****     if(keyLen > 3)
+ 107:Setlist.cpp   ****         keyLen = 3; // max "C##" or "Bb" etc
+ 108:Setlist.cpp   ****     strncpy(entry.key, token, keyLen);
+ 109:Setlist.cpp   ****     entry.key[keyLen] = '\0';
+ 110:Setlist.cpp   **** 
+ 111:Setlist.cpp   ****     // Name is everything after '_'
+ 112:Setlist.cpp   ****     strncpy(entry.name, underscore + 1, sizeof(entry.name) - 1);
+ 113:Setlist.cpp   ****     entry.name[sizeof(entry.name) - 1] = '\0';
+ 114:Setlist.cpp   **** }
+ 153              		.loc 1 114 1 view .LVU33
+ 154 0024 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 155              	.LVL13:
+ 156              	.L3:
+ 105:Setlist.cpp   ****     if(keyLen > 3)
+ 157              		.loc 1 105 5 is_stmt 1 view .LVU34
+ 105:Setlist.cpp   ****     if(keyLen > 3)
+ 158              		.loc 1 105 9 is_stmt 0 view .LVU35
+ 159 0028 871B     		subs	r7, r0, r6
+ 160              	.LVL14:
+ 106:Setlist.cpp   ****         keyLen = 3; // max "C##" or "Bb" etc
+ 161              		.loc 1 106 5 is_stmt 1 view .LVU36
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 6
+
+
+ 108:Setlist.cpp   ****     entry.key[keyLen] = '\0';
+ 162              		.loc 1 108 12 is_stmt 0 view .LVU37
+ 163 002a 3146     		mov	r1, r6
+ 109:Setlist.cpp   **** 
+ 164              		.loc 1 109 23 view .LVU38
+ 165 002c 0026     		movs	r6, #0
+ 166              	.LVL15:
+ 108:Setlist.cpp   ****     entry.key[keyLen] = '\0';
+ 167              		.loc 1 108 12 view .LVU39
+ 168 002e 2046     		mov	r0, r4
+ 169              	.LVL16:
+ 108:Setlist.cpp   ****     entry.key[keyLen] = '\0';
+ 170              		.loc 1 108 12 view .LVU40
+ 171 0030 032F     		cmp	r7, #3
+ 172 0032 A8BF     		it	ge
+ 173 0034 0327     		movge	r7, #3
+ 174              	.LVL17:
+ 108:Setlist.cpp   ****     entry.key[keyLen] = '\0';
+ 175              		.loc 1 108 5 is_stmt 1 view .LVU41
+ 108:Setlist.cpp   ****     entry.key[keyLen] = '\0';
+ 176              		.loc 1 108 12 is_stmt 0 view .LVU42
+ 177 0036 3A46     		mov	r2, r7
+ 178 0038 FFF7FEFF 		bl	strncpy
+ 179              	.LVL18:
+ 109:Setlist.cpp   **** 
+ 180              		.loc 1 109 5 is_stmt 1 view .LVU43
+ 112:Setlist.cpp   ****     entry.name[sizeof(entry.name) - 1] = '\0';
+ 181              		.loc 1 112 12 is_stmt 0 view .LVU44
+ 182 003c 3F22     		movs	r2, #63
+ 183 003e 691C     		adds	r1, r5, #1
+ 184 0040 4046     		mov	r0, r8
+ 109:Setlist.cpp   **** 
+ 185              		.loc 1 109 23 view .LVU45
+ 186 0042 E655     		strb	r6, [r4, r7]
+ 112:Setlist.cpp   ****     entry.name[sizeof(entry.name) - 1] = '\0';
+ 187              		.loc 1 112 5 is_stmt 1 view .LVU46
+ 112:Setlist.cpp   ****     entry.name[sizeof(entry.name) - 1] = '\0';
+ 188              		.loc 1 112 12 is_stmt 0 view .LVU47
+ 189 0044 FFF7FEFF 		bl	strncpy
+ 190              	.LVL19:
+ 113:Setlist.cpp   **** }
+ 191              		.loc 1 113 5 is_stmt 1 view .LVU48
+ 113:Setlist.cpp   **** }
+ 192              		.loc 1 113 40 is_stmt 0 view .LVU49
+ 193 0048 84F84360 		strb	r6, [r4, #67]
+ 194 004c EAE7     		b	.L2
+ 195              		.cfi_endproc
+ 196              	.LFE2739:
+ 198              		.section	.text._ZN7Setlist18ParseTimeSignatureEPKcRiS2_,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	_ZN7Setlist18ParseTimeSignatureEPKcRiS2_
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 204              		.fpu fpv5-d16
+ 206              	_ZN7Setlist18ParseTimeSignatureEPKcRiS2_:
+ 207              	.LVL20:
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 7
+
+
+ 208              	.LFB2740:
+ 115:Setlist.cpp   **** 
+ 116:Setlist.cpp   **** void Setlist::ParseTimeSignature(const char* token,
+ 117:Setlist.cpp   ****                                  int&        numerator,
+ 118:Setlist.cpp   ****                                  int&        denominator)
+ 119:Setlist.cpp   **** {
+ 209              		.loc 1 119 1 is_stmt 1 view -0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 16
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120:Setlist.cpp   ****     // Split "4/4" on '/'
+ 121:Setlist.cpp   ****     char buf[16];
+ 213              		.loc 1 121 5 view .LVU51
+ 122:Setlist.cpp   ****     strncpy(buf, token, sizeof(buf) - 1);
+ 214              		.loc 1 122 5 view .LVU52
+ 119:Setlist.cpp   ****     // Split "4/4" on '/'
+ 215              		.loc 1 119 1 is_stmt 0 view .LVU53
+ 216 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 217              		.cfi_def_cfa_offset 20
+ 218              		.cfi_offset 4, -20
+ 219              		.cfi_offset 5, -16
+ 220              		.cfi_offset 6, -12
+ 221              		.cfi_offset 7, -8
+ 222              		.cfi_offset 14, -4
+ 223 0002 85B0     		sub	sp, sp, #20
+ 224              		.cfi_def_cfa_offset 40
+ 119:Setlist.cpp   ****     // Split "4/4" on '/'
+ 225              		.loc 1 119 1 view .LVU54
+ 226 0004 1646     		mov	r6, r2
+ 123:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+ 227              		.loc 1 123 26 view .LVU55
+ 228 0006 0027     		movs	r7, #0
+ 122:Setlist.cpp   ****     strncpy(buf, token, sizeof(buf) - 1);
+ 229              		.loc 1 122 12 view .LVU56
+ 230 0008 0F22     		movs	r2, #15
+ 231              	.LVL21:
+ 122:Setlist.cpp   ****     strncpy(buf, token, sizeof(buf) - 1);
+ 232              		.loc 1 122 12 view .LVU57
+ 233 000a 6846     		mov	r0, sp
+ 234              	.LVL22:
+ 119:Setlist.cpp   ****     // Split "4/4" on '/'
+ 235              		.loc 1 119 1 view .LVU58
+ 236 000c 1D46     		mov	r5, r3
+ 122:Setlist.cpp   ****     strncpy(buf, token, sizeof(buf) - 1);
+ 237              		.loc 1 122 12 view .LVU59
+ 238 000e FFF7FEFF 		bl	strncpy
+ 239              	.LVL23:
+ 240              		.loc 1 123 5 is_stmt 1 view .LVU60
+ 124:Setlist.cpp   **** 
+ 125:Setlist.cpp   ****     char* slash = strchr(buf, '/');
+ 241              		.loc 1 125 25 is_stmt 0 view .LVU61
+ 242 0012 2F21     		movs	r1, #47
+ 243 0014 6846     		mov	r0, sp
+ 123:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+ 244              		.loc 1 123 26 view .LVU62
+ 245 0016 8DF80F70 		strb	r7, [sp, #15]
+ 246              		.loc 1 125 5 is_stmt 1 view .LVU63
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 8
+
+
+ 247              		.loc 1 125 25 is_stmt 0 view .LVU64
+ 248 001a FFF7FEFF 		bl	strchr
+ 249              	.LVL24:
+ 126:Setlist.cpp   ****     if(slash == NULL)
+ 250              		.loc 1 126 5 is_stmt 1 view .LVU65
+ 251 001e 18B9     		cbnz	r0, .L6
+ 127:Setlist.cpp   ****     {
+ 128:Setlist.cpp   ****         numerator   = 0;
+ 252              		.loc 1 128 9 view .LVU66
+ 253              		.loc 1 128 21 is_stmt 0 view .LVU67
+ 254 0020 3060     		str	r0, [r6]
+ 129:Setlist.cpp   ****         denominator = 0;
+ 255              		.loc 1 129 9 is_stmt 1 view .LVU68
+ 256              	.LVL25:
+ 257              	.L8:
+ 130:Setlist.cpp   ****         return;
+ 131:Setlist.cpp   ****     }
+ 132:Setlist.cpp   **** 
+ 133:Setlist.cpp   ****     *slash      = '\0';
+ 134:Setlist.cpp   ****     numerator   = atoi(buf);
+ 135:Setlist.cpp   ****     denominator = atoi(slash + 1);
+ 258              		.loc 1 135 17 is_stmt 0 view .LVU69
+ 259 0022 2860     		str	r0, [r5]
+ 136:Setlist.cpp   **** }
+ 260              		.loc 1 136 1 view .LVU70
+ 261 0024 05B0     		add	sp, sp, #20
+ 262              		.cfi_remember_state
+ 263              		.cfi_def_cfa_offset 20
+ 264              		@ sp needed
+ 265 0026 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 266              	.LVL26:
+ 267              	.L6:
+ 268              		.cfi_restore_state
+ 133:Setlist.cpp   ****     numerator   = atoi(buf);
+ 269              		.loc 1 133 5 is_stmt 1 view .LVU71
+ 133:Setlist.cpp   ****     numerator   = atoi(buf);
+ 270              		.loc 1 133 17 is_stmt 0 view .LVU72
+ 271 0028 0446     		mov	r4, r0
+ 134:Setlist.cpp   ****     denominator = atoi(slash + 1);
+ 272              		.loc 1 134 23 view .LVU73
+ 273 002a 6846     		mov	r0, sp
+ 274              	.LVL27:
+ 133:Setlist.cpp   ****     numerator   = atoi(buf);
+ 275              		.loc 1 133 17 view .LVU74
+ 276 002c 04F8017B 		strb	r7, [r4], #1
+ 277              	.LVL28:
+ 134:Setlist.cpp   ****     denominator = atoi(slash + 1);
+ 278              		.loc 1 134 5 is_stmt 1 view .LVU75
+ 134:Setlist.cpp   ****     denominator = atoi(slash + 1);
+ 279              		.loc 1 134 23 is_stmt 0 view .LVU76
+ 280 0030 FFF7FEFF 		bl	atoi
+ 281              	.LVL29:
+ 134:Setlist.cpp   ****     denominator = atoi(slash + 1);
+ 282              		.loc 1 134 17 view .LVU77
+ 283 0034 3060     		str	r0, [r6]
+ 135:Setlist.cpp   **** }
+ 284              		.loc 1 135 5 is_stmt 1 view .LVU78
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 9
+
+
+ 135:Setlist.cpp   **** }
+ 285              		.loc 1 135 23 is_stmt 0 view .LVU79
+ 286 0036 2046     		mov	r0, r4
+ 287 0038 FFF7FEFF 		bl	atoi
+ 288              	.LVL30:
+ 289 003c F1E7     		b	.L8
+ 290              		.cfi_endproc
+ 291              	.LFE2740:
+ 293              		.section	.rodata._ZN7Setlist9ParseLineEPKcR12SetlistEntry.str1.1,"aMS",%progbits,1
+ 294              	.LC0:
+ 295 0000 2C00     		.ascii	",\000"
+ 296              	.LC1:
+ 297 0002 25732E77 		.ascii	"%s.wav\000"
+ 297      617600
+ 298              	.LC2:
+ 299 0009 2F706164 		.ascii	"/pads/\000"
+ 299      732F00
+ 300              	.LC3:
+ 301 0010 25732573 		.ascii	"%s%s.wav\000"
+ 301      2E776176 
+ 301      00
+ 302              		.section	.text._ZN7Setlist9ParseLineEPKcR12SetlistEntry,"ax",%progbits
+ 303              		.align	1
+ 304              		.global	_ZN7Setlist9ParseLineEPKcR12SetlistEntry
+ 305              		.syntax unified
+ 306              		.thumb
+ 307              		.thumb_func
+ 308              		.fpu fpv5-d16
+ 310              	_ZN7Setlist9ParseLineEPKcR12SetlistEntry:
+ 311              	.LVL31:
+ 312              	.LFB2738:
+  46:Setlist.cpp   ****     // Expected format: "A_Soft Pad, 120, 4/4"
+ 313              		.loc 1 46 1 is_stmt 1 view -0
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 128
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+  49:Setlist.cpp   ****     strncpy(buf, line, sizeof(buf) - 1);
+ 317              		.loc 1 49 5 view .LVU81
+  50:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+ 318              		.loc 1 50 5 view .LVU82
+  46:Setlist.cpp   ****     // Expected format: "A_Soft Pad, 120, 4/4"
+ 319              		.loc 1 46 1 is_stmt 0 view .LVU83
+ 320 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 321              		.cfi_def_cfa_offset 24
+ 322              		.cfi_offset 4, -24
+ 323              		.cfi_offset 5, -20
+ 324              		.cfi_offset 6, -16
+ 325              		.cfi_offset 7, -12
+ 326              		.cfi_offset 8, -8
+ 327              		.cfi_offset 14, -4
+ 328 0004 A2B0     		sub	sp, sp, #136
+ 329              		.cfi_def_cfa_offset 160
+  51:Setlist.cpp   **** 
+ 330              		.loc 1 51 26 view .LVU84
+ 331 0006 4FF00008 		mov	r8, #0
+  46:Setlist.cpp   ****     // Expected format: "A_Soft Pad, 120, 4/4"
+ 332              		.loc 1 46 1 view .LVU85
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 10
+
+
+ 333 000a 0746     		mov	r7, r0
+ 334 000c 1446     		mov	r4, r2
+  50:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+ 335              		.loc 1 50 12 view .LVU86
+ 336 000e 02A8     		add	r0, sp, #8
+ 337              	.LVL32:
+  50:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+ 338              		.loc 1 50 12 view .LVU87
+ 339 0010 7F22     		movs	r2, #127
+ 340              	.LVL33:
+  50:Setlist.cpp   ****     buf[sizeof(buf) - 1] = '\0';
+ 341              		.loc 1 50 12 view .LVU88
+ 342 0012 FFF7FEFF 		bl	strncpy
+ 343              	.LVL34:
+  51:Setlist.cpp   **** 
+ 344              		.loc 1 51 5 is_stmt 1 view .LVU89
+  54:Setlist.cpp   ****     char* token2 = strtok(NULL, ","); // " 120"
+ 345              		.loc 1 54 26 is_stmt 0 view .LVU90
+ 346 0016 2D49     		ldr	r1, .L28
+ 347 0018 02A8     		add	r0, sp, #8
+  51:Setlist.cpp   **** 
+ 348              		.loc 1 51 26 view .LVU91
+ 349 001a 8DF88780 		strb	r8, [sp, #135]
+  54:Setlist.cpp   ****     char* token2 = strtok(NULL, ","); // " 120"
+ 350              		.loc 1 54 5 is_stmt 1 view .LVU92
+  54:Setlist.cpp   ****     char* token2 = strtok(NULL, ","); // " 120"
+ 351              		.loc 1 54 26 is_stmt 0 view .LVU93
+ 352 001e FFF7FEFF 		bl	strtok
+ 353              	.LVL35:
+  55:Setlist.cpp   ****     char* token3 = strtok(NULL, ","); // " 4/4"
+ 354              		.loc 1 55 26 view .LVU94
+ 355 0022 2A49     		ldr	r1, .L28
+  54:Setlist.cpp   ****     char* token2 = strtok(NULL, ","); // " 120"
+ 356              		.loc 1 54 26 view .LVU95
+ 357 0024 0646     		mov	r6, r0
+ 358              	.LVL36:
+  55:Setlist.cpp   ****     char* token3 = strtok(NULL, ","); // " 4/4"
+ 359              		.loc 1 55 5 is_stmt 1 view .LVU96
+  55:Setlist.cpp   ****     char* token3 = strtok(NULL, ","); // " 4/4"
+ 360              		.loc 1 55 26 is_stmt 0 view .LVU97
+ 361 0026 4046     		mov	r0, r8
+ 362              	.LVL37:
+  55:Setlist.cpp   ****     char* token3 = strtok(NULL, ","); // " 4/4"
+ 363              		.loc 1 55 26 view .LVU98
+ 364 0028 FFF7FEFF 		bl	strtok
+ 365              	.LVL38:
+  56:Setlist.cpp   **** 
+ 366              		.loc 1 56 26 view .LVU99
+ 367 002c 2749     		ldr	r1, .L28
+  55:Setlist.cpp   ****     char* token3 = strtok(NULL, ","); // " 4/4"
+ 368              		.loc 1 55 26 view .LVU100
+ 369 002e 0546     		mov	r5, r0
+ 370              	.LVL39:
+  56:Setlist.cpp   **** 
+ 371              		.loc 1 56 5 is_stmt 1 view .LVU101
+  56:Setlist.cpp   **** 
+ 372              		.loc 1 56 26 is_stmt 0 view .LVU102
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 11
+
+
+ 373 0030 4046     		mov	r0, r8
+ 374              	.LVL40:
+  56:Setlist.cpp   **** 
+ 375              		.loc 1 56 26 view .LVU103
+ 376 0032 FFF7FEFF 		bl	strtok
+ 377              	.LVL41:
+  58:Setlist.cpp   ****         return false;
+ 378              		.loc 1 58 5 is_stmt 1 view .LVU104
+ 379 0036 1EB9     		cbnz	r6, .L10
+ 380              	.LVL42:
+ 381              	.L12:
+  59:Setlist.cpp   **** 
+ 382              		.loc 1 59 16 is_stmt 0 view .LVU105
+ 383 0038 0020     		movs	r0, #0
+ 384              	.L11:
+  89:Setlist.cpp   **** 
+ 385              		.loc 1 89 1 view .LVU106
+ 386 003a 22B0     		add	sp, sp, #136
+ 387              		.cfi_remember_state
+ 388              		.cfi_def_cfa_offset 24
+ 389              		@ sp needed
+ 390 003c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 391              	.LVL43:
+ 392              	.L10:
+ 393              		.cfi_restore_state
+  58:Setlist.cpp   ****         return false;
+ 394              		.loc 1 58 16 discriminator 1 view .LVU107
+ 395 0040 002D     		cmp	r5, #0
+ 396 0042 F9D0     		beq	.L12
+  58:Setlist.cpp   ****         return false;
+ 397              		.loc 1 58 27 discriminator 2 view .LVU108
+ 398 0044 0028     		cmp	r0, #0
+ 399 0046 F7D0     		beq	.L12
+ 400 0048 3246     		mov	r2, r6
+ 401              	.L13:
+ 402              	.LVL44:
+  58:Setlist.cpp   ****         return false;
+ 403              		.loc 1 58 27 discriminator 2 view .LVU109
+ 404 004a 1646     		mov	r6, r2
+ 405              	.LVL45:
+  62:Setlist.cpp   ****         token1++;
+ 406              		.loc 1 62 5 is_stmt 1 view .LVU110
+  62:Setlist.cpp   ****         token1++;
+ 407              		.loc 1 62 19 view .LVU111
+ 408 004c 12F8013B 		ldrb	r3, [r2], #1	@ zero_extendqisi2
+ 409              	.LVL46:
+  62:Setlist.cpp   ****         token1++;
+ 410              		.loc 1 62 19 is_stmt 0 view .LVU112
+ 411 0050 202B     		cmp	r3, #32
+ 412 0052 FAD0     		beq	.L13
+ 413 0054 2A46     		mov	r2, r5
+ 414              	.LVL47:
+ 415              	.L14:
+  62:Setlist.cpp   ****         token1++;
+ 416              		.loc 1 62 19 view .LVU113
+ 417 0056 9046     		mov	r8, r2
+ 418              	.LVL48:
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 12
+
+
+  64:Setlist.cpp   ****         token2++;
+ 419              		.loc 1 64 5 is_stmt 1 view .LVU114
+  64:Setlist.cpp   ****         token2++;
+ 420              		.loc 1 64 19 view .LVU115
+ 421 0058 12F8013B 		ldrb	r3, [r2], #1	@ zero_extendqisi2
+ 422              	.LVL49:
+  64:Setlist.cpp   ****         token2++;
+ 423              		.loc 1 64 19 is_stmt 0 view .LVU116
+ 424 005c 202B     		cmp	r3, #32
+ 425 005e FAD0     		beq	.L14
+ 426              	.LVL50:
+ 427              	.L15:
+  64:Setlist.cpp   ****         token2++;
+ 428              		.loc 1 64 19 view .LVU117
+ 429 0060 0546     		mov	r5, r0
+ 430              	.LVL51:
+  66:Setlist.cpp   ****         token3++;
+ 431              		.loc 1 66 5 is_stmt 1 view .LVU118
+  66:Setlist.cpp   ****         token3++;
+ 432              		.loc 1 66 19 view .LVU119
+ 433 0062 0130     		adds	r0, r0, #1
+ 434              	.LVL52:
+  66:Setlist.cpp   ****         token3++;
+ 435              		.loc 1 66 19 is_stmt 0 view .LVU120
+ 436 0064 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 437 0066 202B     		cmp	r3, #32
+ 438 0068 FAD0     		beq	.L15
+  70:Setlist.cpp   **** 
+ 439              		.loc 1 70 5 is_stmt 1 view .LVU121
+  70:Setlist.cpp   **** 
+ 440              		.loc 1 70 20 is_stmt 0 view .LVU122
+ 441 006a 2246     		mov	r2, r4
+ 442 006c 3146     		mov	r1, r6
+ 443 006e 3846     		mov	r0, r7
+ 444 0070 FFF7FEFF 		bl	_ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry
+ 445              	.LVL53:
+  73:Setlist.cpp   ****     snprintf(
+ 446              		.loc 1 73 5 is_stmt 1 view .LVU123
+  73:Setlist.cpp   ****     snprintf(
+ 447              		.loc 1 73 13 is_stmt 0 view .LVU124
+ 448 0074 3346     		mov	r3, r6
+ 449 0076 164A     		ldr	r2, .L28+4
+ 450 0078 4821     		movs	r1, #72
+ 451 007a 04F14400 		add	r0, r4, #68
+ 452 007e FFF7FEFF 		bl	snprintf
+ 453              	.LVL54:
+  74:Setlist.cpp   ****         entry.filepath, sizeof(entry.filepath), "%s%s.wav", PADS_PATH, token1);
+ 454              		.loc 1 74 5 is_stmt 1 view .LVU125
+  74:Setlist.cpp   ****         entry.filepath, sizeof(entry.filepath), "%s%s.wav", PADS_PATH, token1);
+ 455              		.loc 1 74 13 is_stmt 0 view .LVU126
+ 456 0082 144B     		ldr	r3, .L28+8
+ 457 0084 144A     		ldr	r2, .L28+12
+ 458 0086 5021     		movs	r1, #80
+ 459 0088 04F18C00 		add	r0, r4, #140
+ 460 008c 0096     		str	r6, [sp]
+ 461 008e FFF7FEFF 		bl	snprintf
+ 462              	.LVL55:
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 13
+
+
+  78:Setlist.cpp   ****     if(entry.bpm <= 0 || entry.bpm > 400)
+ 463              		.loc 1 78 5 is_stmt 1 view .LVU127
+  78:Setlist.cpp   ****     if(entry.bpm <= 0 || entry.bpm > 400)
+ 464              		.loc 1 78 21 is_stmt 0 view .LVU128
+ 465 0092 4046     		mov	r0, r8
+ 466 0094 FFF7FEFF 		bl	atoi
+ 467              	.LVL56:
+  78:Setlist.cpp   ****     if(entry.bpm <= 0 || entry.bpm > 400)
+ 468              		.loc 1 78 15 view .LVU129
+ 469 0098 C4F8DC00 		str	r0, [r4, #220]
+  79:Setlist.cpp   ****         return false;
+ 470              		.loc 1 79 5 is_stmt 1 view .LVU130
+  79:Setlist.cpp   ****         return false;
+ 471              		.loc 1 79 23 is_stmt 0 view .LVU131
+ 472 009c 0138     		subs	r0, r0, #1
+  79:Setlist.cpp   ****         return false;
+ 473              		.loc 1 79 5 view .LVU132
+ 474 009e B0F5C87F 		cmp	r0, #400
+ 475 00a2 C9D2     		bcs	.L12
+  83:Setlist.cpp   ****     if(entry.numerator <= 0 || entry.denominator <= 0)
+ 476              		.loc 1 83 5 is_stmt 1 view .LVU133
+  83:Setlist.cpp   ****     if(entry.numerator <= 0 || entry.denominator <= 0)
+ 477              		.loc 1 83 23 is_stmt 0 view .LVU134
+ 478 00a4 04F1E403 		add	r3, r4, #228
+ 479 00a8 04F1E002 		add	r2, r4, #224
+ 480 00ac 2946     		mov	r1, r5
+ 481 00ae 3846     		mov	r0, r7
+ 482 00b0 FFF7FEFF 		bl	_ZN7Setlist18ParseTimeSignatureEPKcRiS2_
+ 483              	.LVL57:
+  84:Setlist.cpp   ****         return false;
+ 484              		.loc 1 84 5 is_stmt 1 view .LVU135
+ 485 00b4 D4F8E030 		ldr	r3, [r4, #224]
+ 486 00b8 002B     		cmp	r3, #0
+ 487 00ba BDDD     		ble	.L12
+  84:Setlist.cpp   ****         return false;
+ 488              		.loc 1 84 29 is_stmt 0 discriminator 1 view .LVU136
+ 489 00bc D4F8E430 		ldr	r3, [r4, #228]
+ 490 00c0 002B     		cmp	r3, #0
+ 491 00c2 B9DD     		ble	.L12
+  87:Setlist.cpp   ****     return true;
+ 492              		.loc 1 87 5 is_stmt 1 view .LVU137
+  87:Setlist.cpp   ****     return true;
+ 493              		.loc 1 87 17 is_stmt 0 view .LVU138
+ 494 00c4 0120     		movs	r0, #1
+ 495 00c6 84F8E800 		strb	r0, [r4, #232]
+  88:Setlist.cpp   **** }
+ 496              		.loc 1 88 5 is_stmt 1 view .LVU139
+  88:Setlist.cpp   **** }
+ 497              		.loc 1 88 12 is_stmt 0 view .LVU140
+ 498 00ca B6E7     		b	.L11
+ 499              	.L29:
+ 500              		.align	2
+ 501              	.L28:
+ 502 00cc 00000000 		.word	.LC0
+ 503 00d0 02000000 		.word	.LC1
+ 504 00d4 09000000 		.word	.LC2
+ 505 00d8 10000000 		.word	.LC3
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 14
+
+
+ 506              		.cfi_endproc
+ 507              	.LFE2738:
+ 509              		.section	.rodata._ZN7Setlist4LoadEv.str1.1,"aMS",%progbits,1
+ 510              	.LC4:
+ 511 0000 2F736574 		.ascii	"/setlist/setlist.csv\000"
+ 511      6C697374 
+ 511      2F736574 
+ 511      6C697374 
+ 511      2E637376 
+ 512              		.section	.text._ZN7Setlist4LoadEv,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	_ZN7Setlist4LoadEv
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 518              		.fpu fpv5-d16
+ 520              	_ZN7Setlist4LoadEv:
+ 521              	.LVL58:
+ 522              	.LFB2737:
+  14:Setlist.cpp   ****     loaded_ = false;
+ 523              		.loc 1 14 1 is_stmt 1 view -0
+ 524              		.cfi_startproc
+ 525              		@ args = 0, pretend = 0, frame = 368
+ 526              		@ frame_needed = 0, uses_anonymous_args = 0
+  15:Setlist.cpp   ****     count_  = 0;
+ 527              		.loc 1 15 5 view .LVU142
+  15:Setlist.cpp   ****     count_  = 0;
+ 528              		.loc 1 15 13 is_stmt 0 view .LVU143
+ 529 0000 0023     		movs	r3, #0
+  18:Setlist.cpp   ****         return false;
+ 530              		.loc 1 18 21 view .LVU144
+ 531 0002 2249     		ldr	r1, .L50
+  14:Setlist.cpp   ****     loaded_ = false;
+ 532              		.loc 1 14 1 view .LVU145
+ 533 0004 30B5     		push	{r4, r5, lr}
+ 534              		.cfi_def_cfa_offset 12
+ 535              		.cfi_offset 4, -12
+ 536              		.cfi_offset 5, -8
+ 537              		.cfi_offset 14, -4
+ 538 0006 0446     		mov	r4, r0
+ 539 0008 DDB0     		sub	sp, sp, #372
+ 540              		.cfi_def_cfa_offset 384
+  15:Setlist.cpp   ****     count_  = 0;
+ 541              		.loc 1 15 13 view .LVU146
+ 542 000a 80F81C3B 		strb	r3, [r0, #2844]
+  16:Setlist.cpp   **** 
+ 543              		.loc 1 16 5 is_stmt 1 view .LVU147
+  16:Setlist.cpp   **** 
+ 544              		.loc 1 16 13 is_stmt 0 view .LVU148
+ 545 000e C0F8143B 		str	r3, [r0, #2836]
+  18:Setlist.cpp   ****         return false;
+ 546              		.loc 1 18 5 is_stmt 1 view .LVU149
+  18:Setlist.cpp   ****         return false;
+ 547              		.loc 1 18 21 is_stmt 0 view .LVU150
+ 548 0012 0068     		ldr	r0, [r0]
+ 549              	.LVL59:
+  18:Setlist.cpp   ****         return false;
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 15
+
+
+ 550              		.loc 1 18 21 view .LVU151
+ 551 0014 FFF7FEFF 		bl	_ZN9SdHandler8OpenFileEPKc
+ 552              	.LVL60:
+  18:Setlist.cpp   ****         return false;
+ 553              		.loc 1 18 5 view .LVU152
+ 554 0018 0028     		cmp	r0, #0
+ 555 001a 34D0     		beq	.L31
+ 556              	.L37:
+  24:Setlist.cpp   ****     {
+ 557              		.loc 1 24 5 is_stmt 1 view .LVU153
+  24:Setlist.cpp   ****     {
+ 558              		.loc 1 24 44 view .LVU154
+  24:Setlist.cpp   ****     {
+ 559              		.loc 1 24 23 is_stmt 0 view .LVU155
+ 560 001c 8022     		movs	r2, #128
+ 561 001e 01A9     		add	r1, sp, #4
+ 562 0020 2068     		ldr	r0, [r4]
+ 563 0022 FFF7FEFF 		bl	_ZN9SdHandler8ReadLineEPcj
+ 564              	.LVL61:
+  24:Setlist.cpp   ****     {
+ 565              		.loc 1 24 44 view .LVU156
+ 566 0026 18B3     		cbz	r0, .L32
+  24:Setlist.cpp   ****     {
+ 567              		.loc 1 24 44 discriminator 1 view .LVU157
+ 568 0028 D4F8143B 		ldr	r3, [r4, #2836]
+ 569 002c 0B2B     		cmp	r3, #11
+ 570 002e 1FDC     		bgt	.L32
+ 571              	.LBB14:
+  26:Setlist.cpp   **** 
+ 572              		.loc 1 26 9 is_stmt 1 view .LVU158
+  29:Setlist.cpp   ****             continue;
+ 573              		.loc 1 29 9 view .LVU159
+  29:Setlist.cpp   ****             continue;
+ 574              		.loc 1 29 18 is_stmt 0 view .LVU160
+ 575 0030 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+  29:Setlist.cpp   ****             continue;
+ 576              		.loc 1 29 9 view .LVU161
+ 577 0034 002B     		cmp	r3, #0
+ 578 0036 F1D0     		beq	.L37
+  29:Setlist.cpp   ****             continue;
+ 579              		.loc 1 29 28 discriminator 2 view .LVU162
+ 580 0038 232B     		cmp	r3, #35
+ 581 003a EFD0     		beq	.L37
+  32:Setlist.cpp   ****         if(ParseLine(line, entry))
+ 582              		.loc 1 32 9 is_stmt 1 view .LVU163
+  32:Setlist.cpp   ****         if(ParseLine(line, entry))
+ 583              		.loc 1 32 22 is_stmt 0 view .LVU164
+ 584 003c EC25     		movs	r5, #236
+ 585 003e 0021     		movs	r1, #0
+ 586 0040 21A8     		add	r0, sp, #132
+ 587 0042 2A46     		mov	r2, r5
+ 588 0044 FFF7FEFF 		bl	memset
+ 589              	.LVL62:
+  33:Setlist.cpp   ****         {
+ 590              		.loc 1 33 9 is_stmt 1 view .LVU165
+  33:Setlist.cpp   ****         {
+ 591              		.loc 1 33 21 is_stmt 0 view .LVU166
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 16
+
+
+ 592 0048 21AA     		add	r2, sp, #132
+ 593 004a 01A9     		add	r1, sp, #4
+ 594 004c 2046     		mov	r0, r4
+ 595 004e FFF7FEFF 		bl	_ZN7Setlist9ParseLineEPKcR12SetlistEntry
+ 596              	.LVL63:
+  33:Setlist.cpp   ****         {
+ 597              		.loc 1 33 9 view .LVU167
+ 598 0052 0028     		cmp	r0, #0
+ 599 0054 E2D0     		beq	.L37
+  35:Setlist.cpp   ****         }
+ 600              		.loc 1 35 13 is_stmt 1 view .LVU168
+  35:Setlist.cpp   ****         }
+ 601              		.loc 1 35 22 is_stmt 0 view .LVU169
+ 602 0056 D4F8140B 		ldr	r0, [r4, #2836]
+  35:Setlist.cpp   ****         }
+ 603              		.loc 1 35 32 view .LVU170
+ 604 005a 2A46     		mov	r2, r5
+ 605 005c 21A9     		add	r1, sp, #132
+  35:Setlist.cpp   ****         }
+ 606              		.loc 1 35 28 view .LVU171
+ 607 005e 431C     		adds	r3, r0, #1
+  35:Setlist.cpp   ****         }
+ 608              		.loc 1 35 32 view .LVU172
+ 609 0060 05FB0040 		mla	r0, r5, r0, r4
+  35:Setlist.cpp   ****         }
+ 610              		.loc 1 35 28 view .LVU173
+ 611 0064 C4F8143B 		str	r3, [r4, #2836]
+  35:Setlist.cpp   ****         }
+ 612              		.loc 1 35 32 view .LVU174
+ 613 0068 0430     		adds	r0, r0, #4
+ 614 006a FFF7FEFF 		bl	memcpy
+ 615              	.LVL64:
+  30:Setlist.cpp   **** 
+ 616              		.loc 1 30 13 is_stmt 1 view .LVU175
+ 617 006e D5E7     		b	.L37
+ 618              	.L32:
+ 619              	.LBE14:
+  40:Setlist.cpp   ****     loaded_ = count_ > 0;
+ 620              		.loc 1 40 5 view .LVU176
+  40:Setlist.cpp   ****     loaded_ = count_ > 0;
+ 621              		.loc 1 40 18 is_stmt 0 view .LVU177
+ 622 0070 2068     		ldr	r0, [r4]
+ 623 0072 FFF7FEFF 		bl	_ZN9SdHandler9CloseFileEv
+ 624              	.LVL65:
+  41:Setlist.cpp   ****     return loaded_;
+ 625              		.loc 1 41 5 is_stmt 1 view .LVU178
+  41:Setlist.cpp   ****     return loaded_;
+ 626              		.loc 1 41 22 is_stmt 0 view .LVU179
+ 627 0076 D4F8140B 		ldr	r0, [r4, #2836]
+ 628 007a 0028     		cmp	r0, #0
+ 629 007c D4BF     		ite	le
+ 630 007e 0020     		movle	r0, #0
+ 631 0080 0120     		movgt	r0, #1
+  41:Setlist.cpp   ****     return loaded_;
+ 632              		.loc 1 41 13 view .LVU180
+ 633 0082 84F81C0B 		strb	r0, [r4, #2844]
+  42:Setlist.cpp   **** }
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 17
+
+
+ 634              		.loc 1 42 5 is_stmt 1 view .LVU181
+ 635              	.L31:
+  43:Setlist.cpp   **** 
+ 636              		.loc 1 43 1 is_stmt 0 view .LVU182
+ 637 0086 5DB0     		add	sp, sp, #372
+ 638              		.cfi_def_cfa_offset 12
+ 639              		@ sp needed
+ 640 0088 30BD     		pop	{r4, r5, pc}
+ 641              	.LVL66:
+ 642              	.L51:
+  43:Setlist.cpp   **** 
+ 643              		.loc 1 43 1 view .LVU183
+ 644 008a 00BF     		.align	2
+ 645              	.L50:
+ 646 008c 00000000 		.word	.LC4
+ 647              		.cfi_endproc
+ 648              	.LFE2737:
+ 650              		.section	.text._ZN7Setlist4NextEv,"ax",%progbits
+ 651              		.align	1
+ 652              		.global	_ZN7Setlist4NextEv
+ 653              		.syntax unified
+ 654              		.thumb
+ 655              		.thumb_func
+ 656              		.fpu fpv5-d16
+ 658              	_ZN7Setlist4NextEv:
+ 659              	.LVL67:
+ 660              	.LFB2741:
+ 137:Setlist.cpp   **** 
+ 138:Setlist.cpp   **** void Setlist::Next()
+ 139:Setlist.cpp   **** {
+ 661              		.loc 1 139 1 is_stmt 1 view -0
+ 662              		.cfi_startproc
+ 663              		@ args = 0, pretend = 0, frame = 0
+ 664              		@ frame_needed = 0, uses_anonymous_args = 0
+ 665              		@ link register save eliminated.
+ 140:Setlist.cpp   ****     if(count_ == 0)
+ 666              		.loc 1 140 5 view .LVU185
+ 667              		.loc 1 140 8 is_stmt 0 view .LVU186
+ 668 0000 D0F8142B 		ldr	r2, [r0, #2836]
+ 669              		.loc 1 140 5 view .LVU187
+ 670 0004 42B1     		cbz	r2, .L52
+ 141:Setlist.cpp   ****         return;
+ 142:Setlist.cpp   ****     currentIndex_ = (currentIndex_ + 1) % count_;
+ 671              		.loc 1 142 5 is_stmt 1 view .LVU188
+ 672              		.loc 1 142 36 is_stmt 0 view .LVU189
+ 673 0006 D0F8183B 		ldr	r3, [r0, #2840]
+ 674 000a 0133     		adds	r3, r3, #1
+ 675              		.loc 1 142 41 view .LVU190
+ 676 000c 93FBF2F1 		sdiv	r1, r3, r2
+ 677 0010 02FB1133 		mls	r3, r2, r1, r3
+ 678              		.loc 1 142 19 view .LVU191
+ 679 0014 C0F8183B 		str	r3, [r0, #2840]
+ 680              	.L52:
+ 143:Setlist.cpp   **** }
+ 681              		.loc 1 143 1 view .LVU192
+ 682 0018 7047     		bx	lr
+ 683              		.cfi_endproc
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 18
+
+
+ 684              	.LFE2741:
+ 686              		.section	.text._ZN7Setlist10GetCurrentEv,"ax",%progbits
+ 687              		.align	1
+ 688              		.global	_ZN7Setlist10GetCurrentEv
+ 689              		.syntax unified
+ 690              		.thumb
+ 691              		.thumb_func
+ 692              		.fpu fpv5-d16
+ 694              	_ZN7Setlist10GetCurrentEv:
+ 695              	.LVL68:
+ 696              	.LFB2742:
+ 144:Setlist.cpp   **** 
+ 145:Setlist.cpp   **** SetlistEntry* Setlist::GetCurrent()
+ 146:Setlist.cpp   **** {
+ 697              		.loc 1 146 1 is_stmt 1 view -0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 701              		@ link register save eliminated.
+ 147:Setlist.cpp   ****     if(count_ == 0)
+ 702              		.loc 1 147 5 view .LVU194
+ 703 0000 D0F8143B 		ldr	r3, [r0, #2836]
+ 704 0004 33B1     		cbz	r3, .L59
+ 148:Setlist.cpp   ****         return nullptr;
+ 149:Setlist.cpp   ****     return &entries_[currentIndex_];
+ 705              		.loc 1 149 5 view .LVU195
+ 706              		.loc 1 149 35 is_stmt 0 view .LVU196
+ 707 0006 D0F8183B 		ldr	r3, [r0, #2840]
+ 708 000a EC22     		movs	r2, #236
+ 709 000c 02FB0300 		mla	r0, r2, r3, r0
+ 710              	.LVL69:
+ 711              		.loc 1 149 35 view .LVU197
+ 712 0010 0430     		adds	r0, r0, #4
+ 713 0012 7047     		bx	lr
+ 714              	.LVL70:
+ 715              	.L59:
+ 148:Setlist.cpp   ****         return nullptr;
+ 716              		.loc 1 148 16 view .LVU198
+ 717 0014 1846     		mov	r0, r3
+ 718              	.LVL71:
+ 150:Setlist.cpp   **** }
+ 719              		.loc 1 150 1 view .LVU199
+ 720 0016 7047     		bx	lr
+ 721              		.cfi_endproc
+ 722              	.LFE2742:
+ 724              		.section	.text._ZN7Setlist7GetNextEv,"ax",%progbits
+ 725              		.align	1
+ 726              		.global	_ZN7Setlist7GetNextEv
+ 727              		.syntax unified
+ 728              		.thumb
+ 729              		.thumb_func
+ 730              		.fpu fpv5-d16
+ 732              	_ZN7Setlist7GetNextEv:
+ 733              	.LVL72:
+ 734              	.LFB2743:
+ 151:Setlist.cpp   **** 
+ 152:Setlist.cpp   **** SetlistEntry* Setlist::GetNext()
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 19
+
+
+ 153:Setlist.cpp   **** {
+ 735              		.loc 1 153 1 is_stmt 1 view -0
+ 736              		.cfi_startproc
+ 737              		@ args = 0, pretend = 0, frame = 0
+ 738              		@ frame_needed = 0, uses_anonymous_args = 0
+ 739              		@ link register save eliminated.
+ 154:Setlist.cpp   ****     if(count_ == 0)
+ 740              		.loc 1 154 5 view .LVU201
+ 741              		.loc 1 154 8 is_stmt 0 view .LVU202
+ 742 0000 D0F8143B 		ldr	r3, [r0, #2836]
+ 743              		.loc 1 154 5 view .LVU203
+ 744 0004 5BB1     		cbz	r3, .L62
+ 155:Setlist.cpp   ****         return nullptr;
+ 156:Setlist.cpp   ****     int nextIndex = (currentIndex_ + 1) % count_;
+ 745              		.loc 1 156 5 is_stmt 1 view .LVU204
+ 746              	.LVL73:
+ 157:Setlist.cpp   ****     return &entries_[nextIndex];
+ 747              		.loc 1 157 5 view .LVU205
+ 156:Setlist.cpp   ****     return &entries_[nextIndex];
+ 748              		.loc 1 156 36 is_stmt 0 view .LVU206
+ 749 0006 D0F8182B 		ldr	r2, [r0, #2840]
+ 750 000a 0132     		adds	r2, r2, #1
+ 156:Setlist.cpp   ****     return &entries_[nextIndex];
+ 751              		.loc 1 156 9 view .LVU207
+ 752 000c 92FBF3F1 		sdiv	r1, r2, r3
+ 753 0010 03FB1123 		mls	r3, r3, r1, r2
+ 754              	.LVL74:
+ 755              		.loc 1 157 31 view .LVU208
+ 756 0014 EC22     		movs	r2, #236
+ 757 0016 02FB0300 		mla	r0, r2, r3, r0
+ 758              	.LVL75:
+ 759              		.loc 1 157 31 view .LVU209
+ 760 001a 0430     		adds	r0, r0, #4
+ 761 001c 7047     		bx	lr
+ 762              	.LVL76:
+ 763              	.L62:
+ 155:Setlist.cpp   ****         return nullptr;
+ 764              		.loc 1 155 16 view .LVU210
+ 765 001e 1846     		mov	r0, r3
+ 766              	.LVL77:
+ 158:Setlist.cpp   **** }
+ 767              		.loc 1 158 1 view .LVU211
+ 768 0020 7047     		bx	lr
+ 769              		.cfi_endproc
+ 770              	.LFE2743:
+ 772              		.section	.text._ZNK7Setlist8GetCountEv,"ax",%progbits
+ 773              		.align	1
+ 774              		.global	_ZNK7Setlist8GetCountEv
+ 775              		.syntax unified
+ 776              		.thumb
+ 777              		.thumb_func
+ 778              		.fpu fpv5-d16
+ 780              	_ZNK7Setlist8GetCountEv:
+ 781              	.LVL78:
+ 782              	.LFB2744:
+ 159:Setlist.cpp   **** 
+ 160:Setlist.cpp   **** int Setlist::GetCount() const
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 20
+
+
+ 161:Setlist.cpp   **** {
+ 783              		.loc 1 161 1 is_stmt 1 view -0
+ 784              		.cfi_startproc
+ 785              		@ args = 0, pretend = 0, frame = 0
+ 786              		@ frame_needed = 0, uses_anonymous_args = 0
+ 787              		@ link register save eliminated.
+ 162:Setlist.cpp   ****     return count_;
+ 788              		.loc 1 162 5 view .LVU213
+ 163:Setlist.cpp   **** }
+ 789              		.loc 1 163 1 is_stmt 0 view .LVU214
+ 790 0000 D0F8140B 		ldr	r0, [r0, #2836]
+ 791              	.LVL79:
+ 792              		.loc 1 163 1 view .LVU215
+ 793 0004 7047     		bx	lr
+ 794              		.cfi_endproc
+ 795              	.LFE2744:
+ 797              		.section	.text._ZNK7Setlist8IsLoadedEv,"ax",%progbits
+ 798              		.align	1
+ 799              		.global	_ZNK7Setlist8IsLoadedEv
+ 800              		.syntax unified
+ 801              		.thumb
+ 802              		.thumb_func
+ 803              		.fpu fpv5-d16
+ 805              	_ZNK7Setlist8IsLoadedEv:
+ 806              	.LVL80:
+ 807              	.LFB2745:
+ 164:Setlist.cpp   **** bool Setlist::IsLoaded() const
+ 165:Setlist.cpp   **** {
+ 808              		.loc 1 165 1 is_stmt 1 view -0
+ 809              		.cfi_startproc
+ 810              		@ args = 0, pretend = 0, frame = 0
+ 811              		@ frame_needed = 0, uses_anonymous_args = 0
+ 812              		@ link register save eliminated.
+ 166:Setlist.cpp   ****     return loaded_;
+ 813              		.loc 1 166 5 view .LVU217
+ 167:Setlist.cpp   **** }...
+ 814              		.loc 1 167 1 is_stmt 0 view .LVU218
+ 815 0000 90F81C0B 		ldrb	r0, [r0, #2844]	@ zero_extendqisi2
+ 816              	.LVL81:
+ 817              		.loc 1 167 1 view .LVU219
+ 818 0004 7047     		bx	lr
+ 819              		.cfi_endproc
+ 820              	.LFE2745:
+ 822              		.text
+ 823              	.Letext0:
+ 824              		.file 2 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 825              		.file 3 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 826              		.file 4 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdint.h"
+ 827              		.file 5 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stddef.h"
+ 828              		.file 6 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cmath"
+ 829              		.file 7 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\std_abs.h"
+ 830              		.file 8 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdlib"
+ 831              		.file 9 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdint"
+ 832              		.file 10 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\type_traits"
+ 833              		.file 11 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\debug\\debug.h"
+ 834              		.file 12 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\arm-none-eabi\\t
+ 835              		.file 13 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\algorithmf
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 21
+
+
+ 836              		.file 14 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\stl_pair.h
+ 837              		.file 15 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\exception_
+ 838              		.file 16 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdarg"
+ 839              		.file 17 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdio"
+ 840              		.file 18 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstring"
+ 841              		.file 19 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstddef"
+ 842              		.file 20 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\predefined
+ 843              		.file 21 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_types.h"
+ 844              		.file 22 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\reent.h"
+ 845              		.file 23 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\lock.h"
+ 846              		.file 24 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\math.h"
+ 847              		.file 25 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdlib.h"
+ 848              		.file 26 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\math.h"
+ 849              		.file 27 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\stdlib.h"
+ 850              		.file 28 "../../libDaisy//src/daisy_core.h"
+ 851              		.file 29 "../../libDaisy//src/per/tim.h"
+ 852              		.file 30 "../../libDaisy//src/sys/system.h"
+ 853              		.file 31 "../../libDaisy//src/per/qspi.h"
+ 854              		.file 32 "../../libDaisy//src/per/dac.h"
+ 855              		.file 33 "../../libDaisy//src/per/gpio.h"
+ 856              		.file 34 "../../libDaisy//src/per/sai.h"
+ 857              		.file 35 "../../libDaisy//src/hid/audio.h"
+ 858              		.file 36 "../../libDaisy//src/per/adc.h"
+ 859              		.file 37 "../../libDaisy//src/hid/usb.h"
+ 860              		.file 38 "../../libDaisy//src/per/sdmmc.h"
+ 861              		.file 39 "../../libDaisy//src/dev/codec_ak4556.h"
+ 862              		.file 40 "../../libDaisy//src/dev/max11300.h"
+ 863              		.file 41 "../../libDaisy//src/sys/fatfs.h"
+ 864              		.file 42 "../../libDaisy//src/dev/sr_595.h"
+ 865              		.file 43 "../../libDaisy//src/util/wav_format.h"
+ 866              		.file 44 "../../libDaisy//src/daisy_seed.h"
+ 867              		.file 45 "../../libDaisy//src/dev/sdram.h"
+ 868              		.file 46 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stdarg.h"
+ 869              		.file 47 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdio.h"
+ 870              		.file 48 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\string.h"
+ 871              		.file 49 "../../libDaisy//Middlewares/Third_Party/FatFs/src/integer.h"
+ 872              		.file 50 "../../libDaisy//Middlewares/Third_Party/FatFs/src/ff.h"
+ 873              		.file 51 "SdHandler.h"
+ 874              		.file 52 "Setlist.h"
+ 875              		.file 53 "<built-in>"
+ARM GAS  C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Setlist.cpp
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:17     .text._ZN7SetlistC2ER9SdHandler:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:25     .text._ZN7SetlistC2ER9SdHandler:00000000 _ZN7SetlistC2ER9SdHandler
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:25     .text._ZN7SetlistC2ER9SdHandler:00000000 _ZN7SetlistC1ER9SdHandler
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:85     .text._ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:92     .text._ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry:00000000 _ZN7Setlist15ParseKeyAndNameEPKcR12SetlistEntry
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:199    .text._ZN7Setlist18ParseTimeSignatureEPKcRiS2_:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:206    .text._ZN7Setlist18ParseTimeSignatureEPKcRiS2_:00000000 _ZN7Setlist18ParseTimeSignatureEPKcRiS2_
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:303    .text._ZN7Setlist9ParseLineEPKcR12SetlistEntry:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:310    .text._ZN7Setlist9ParseLineEPKcR12SetlistEntry:00000000 _ZN7Setlist9ParseLineEPKcR12SetlistEntry
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:502    .text._ZN7Setlist9ParseLineEPKcR12SetlistEntry:000000cc $d
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:513    .text._ZN7Setlist4LoadEv:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:520    .text._ZN7Setlist4LoadEv:00000000 _ZN7Setlist4LoadEv
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:646    .text._ZN7Setlist4LoadEv:0000008c $d
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:651    .text._ZN7Setlist4NextEv:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:658    .text._ZN7Setlist4NextEv:00000000 _ZN7Setlist4NextEv
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:687    .text._ZN7Setlist10GetCurrentEv:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:694    .text._ZN7Setlist10GetCurrentEv:00000000 _ZN7Setlist10GetCurrentEv
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:725    .text._ZN7Setlist7GetNextEv:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:732    .text._ZN7Setlist7GetNextEv:00000000 _ZN7Setlist7GetNextEv
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:773    .text._ZNK7Setlist8GetCountEv:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:780    .text._ZNK7Setlist8GetCountEv:00000000 _ZNK7Setlist8GetCountEv
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:798    .text._ZNK7Setlist8IsLoadedEv:00000000 $t
+C:\Users\danig\AppData\Local\Temp\ccME2Gi7.s:805    .text._ZNK7Setlist8IsLoadedEv:00000000 _ZNK7Setlist8IsLoadedEv
+
+UNDEFINED SYMBOLS
+memset
+strchr
+strncpy
+atoi
+strtok
+snprintf
+_ZN9SdHandler8OpenFileEPKc
+_ZN9SdHandler8ReadLineEPcj
+memcpy
+_ZN9SdHandler9CloseFileEv
